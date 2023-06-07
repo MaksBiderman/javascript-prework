@@ -1,6 +1,12 @@
 function playGame(playerInput){
   clearMessages();
   let playerMove = getMoveName(playerInput);
+  const win = function(){
+    printMessage('Wygrywasz :)');
+  }
+  const lose =function(){
+    printMessage('Przegrywasz :(')
+  }
   
   function getMoveName(argMoveId){
     if(argMoveId == 1){
@@ -22,22 +28,28 @@ function playGame(playerInput){
       printMessage('Tym razem remis')
     }
     else if(argComputerMove == 'kamień' && argPlayerMove == 'papier'){
-      printMessage('wygrywasz! :)')
+      win();
+      playerWins++;
     }
     else if(argComputerMove == 'kamień' && argPlayerMove == 'nożyce'){
-      printMessage('Przegrywasz! :(')
+      lose();
+      computerWins++;
     } 
     else if(argComputerMove == 'papier' && argPlayerMove == 'kamień'){
-      printMessage('Przegrywasz! :(')
+      lose();
+      computerWins++;
     }
     else if(argComputerMove == 'papier' && argPlayerMove == 'nożyce'){
-      printMessage('wygrywasz! :)')
+      win();
+      playerWins++;
     } 
     else if(argComputerMove == 'nożyce' && argPlayerMove == 'papier'){
-      printMessage('Przegrywasz! :(')
+      lose();
+      computerWins++;
     }
     else if(argComputerMove == 'nożyce' && argPlayerMove == 'kamień'){
-      printMessage('wygrywasz! :)')
+      win();
+      playerWins++;
     }
     else {
       printMessage('Niedozwolony ruch!!')
@@ -50,8 +62,12 @@ function playGame(playerInput){
   printMessage('Twój ruch to: ' + playerMove);
   printMessage("Komputer wybrał: " + computerMove);
   displayResult(computerMove,playerMove)
+  updateResult();
   
 }
+let playerWins = 0;
+let computerWins = 0;
+
 document.getElementById('rock').addEventListener('click', function(){
   playGame(1)
 });

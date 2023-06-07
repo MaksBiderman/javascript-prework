@@ -1,0 +1,18 @@
+body {
+    text-align: center;
+}
+.interface {
+    background-color: aqua;
+    text-align: center;
+    border: solid 2px;
+    padding: 50px;
+    margin: 0 600px;
+}
+.messages {
+    text-align:center;
+}
+.result {
+    padding: 20px;
+    font-size: 50px;
+    font-weight: bold;
+}
